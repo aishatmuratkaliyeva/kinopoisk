@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">MovieTime</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,11 +18,11 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home</a>
             </li>
-<!--            <security:authorize access="ADMIN">-->
-<!--                <li class="nav-item active">-->
-<!--                    <a class="nav-link" th:href="@{/admin/add-movie}">Добавить фильм</a>-->
-<!--                </li>-->
-<!--            </security:authorize>-->
+            <!--            <security:authorize access="ADMIN">-->
+            <!--                <li class="nav-item active">-->
+            <!--                    <a class="nav-link" th:href="@{/admin/add-movie}">Добавить фильм</a>-->
+            <!--                </li>-->
+            <!--            </security:authorize>-->
             <div sec:authorize="hasRole('ADMIN')">
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/admin/add-movie}">Добавить фильм</a>
@@ -46,19 +46,19 @@
     </div>
 </nav>
 
-    <h1>Movies List: </h1>
+<h1>Movies List: </h1>
 
-    <div class="row">
-        <div th:each="movie: ${movies}" class="col-xl-3">
-            <div  class="card">
-                <img class="card-img-top" style="height: 18rem; width: 100%;" th:src="@{/movies/display/{id}(id=${movie.id})}" alt="">
-                <div class="card-body">
-                    <h6 class="card-title" th:text="${movie.name}"></h6>
-                    <p class="card-text" th:text="${movie.description}"></p>
-                    <a th:href="${movie.link}">Смотреть трейлер</a>
-                </div>
+<div class="row" style="background-color: black">
+    <div th:each="movie: ${movies}" class="col-xl-3">
+        <div  class="card">
+            <img class="card-img-top" style="height: 18rem; width: 100%;" th:src="@{/movies/display/{id}(id=${movie.id})}" alt="">
+            <div class="card-body">
+                <h6 class="card-title" th:text="${movie.name}"></h6>
+                <p class="card-text" th:text="${movie.description}"></p>
+                <a th:href="${movie.link}">Смотреть трейлер</a>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
